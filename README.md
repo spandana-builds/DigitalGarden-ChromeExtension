@@ -92,7 +92,6 @@ Works in Chrome, Edge, Brave, Arc, Opera, and any Chromium browser.
 
 ##  Screenshots
 
-_Add your own screenshots here:_
 
 ![Main Dashboard](screenshots/image0.png)
 
