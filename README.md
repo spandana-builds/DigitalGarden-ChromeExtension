@@ -94,10 +94,11 @@ Works in Chrome, Edge, Brave, Arc, Opera, and any Chromium browser.
 
 _Add your own screenshots here:_
 
-(screenshots/image0.png)
-- `screenshots/image1.png`
-- `screenshots/image2.png`
+![Main Dashboard](screenshots/image0.png)
 
+![Task Manager](screenshots/image1.png)
+
+![Focus Mode](screenshots/image2.png)
 ---
 
 ##  Future Improvements
