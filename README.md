@@ -1,6 +1,6 @@
 # 🌿 Hasiru Haadi – Digital Garden Dashboard
 
-A calming, nature-inspired Chrome new tab extension that helps you stay focused, organized, and at peace. Built with vanilla HTML, CSS, and JavaScript — no frameworks.
+A nature-inspired productivity dashboard that transforms your browser’s new tab into a peaceful digital workspace for focus, organization, and mindful productivity.
 
 > _Hasiru Haadi_ means "green path" in Kannada.
 
