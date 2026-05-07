@@ -94,7 +94,7 @@ Works in Chrome, Edge, Brave, Arc, Opera, and any Chromium browser.
 
 _Add your own screenshots here:_
 
-- (screenshots/image0.png)
+(screenshots/image0.png)
 - `screenshots/image1.png`
 - `screenshots/image2.png`
 
