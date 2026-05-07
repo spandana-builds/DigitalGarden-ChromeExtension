@@ -1,6 +1,8 @@
 #  Hasiru Haadi – Digital Garden Dashboard
 
-A nature-inspired productivity dashboard that transforms your browser’s new tab into a peaceful digital workspace for focus, organization, and mindful productivity. Built with vanilla HTML, CSS, and JavaScript — no frameworks.
+
+A nature-inspired productivity dashboard that transforms your browser’s new tab into a peaceful digital workspace for focus, organization, and mindful productivity.
+>>>>>>> 8404822e1ae4e60b07d4d649dce3af2fd1d2830e
 
 > _Hasiru Haadi_ means "green path" in Kannada.
 
