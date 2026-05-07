@@ -18,9 +18,9 @@ A calming, nature-inspired Chrome new tab extension that helps you stay focused,
 - 🍅 **Pomodoro focus timer** (25 min)
 - 🌧️ **Rain ambience** toggle (audio + animated rain canvas)
 - 🌙 **Dark / light theme toggle**
-- 🖼️ **Background shuffle** (forest photo + earthy gradients)
+- 🖼️ **Background shuffle** (forest photo, cloudy sky, landscape photo )
 - 🪟 **Glassmorphism UI**, soft shadows, smooth animations
-- 📱 **Fully responsive**
+ 
 
 ---
 
@@ -39,10 +39,10 @@ digital-garden-dashboard/
     ├── backgrounds/
     │   └── forest.jpg
     └── sounds/
-        └── rain.mp3   (optional — drop in your own loopable rain track)
+        └── rain.mp3   
 ```
 
-> `assets/sounds/rain.mp3` is optional. Without it, the rain visual still works, only the audio is silent. You can use any royalty-free rain loop (e.g. from Pixabay or Freesound).
+> `assets/sounds/rain.mp3` is optional. Without it, the rain visual still works, only the audio is silent. You can use any royalty-free rain loop.
 
 ---
 
@@ -62,7 +62,7 @@ digital-garden-dashboard/
 2. Open Chrome and go to `chrome://extensions`.
 3. Enable **Developer mode** (top right).
 4. Click **Load unpacked** and select the `digital-garden-dashboard` folder.
-5. Open a new tab — enjoy your garden 🌿
+5. Open a new tab — enjoy your garden 
 
 Works in Chrome, Edge, Brave, Arc, Opera, and any Chromium browser.
 
@@ -77,7 +77,7 @@ Works in Chrome, Edge, Brave, Arc, Opera, and any Chromium browser.
 
 ---
 
-## 🌱 How the Garden Grows
+## How the Garden Grows 🧑‍🌾
 
 | Tasks completed | Stage |
 |-----------------|-------|
@@ -92,9 +92,9 @@ Works in Chrome, Edge, Brave, Arc, Opera, and any Chromium browser.
 
 _Add your own screenshots here:_
 
-- `screenshots/dashboard-light.png`
-- `screenshots/dashboard-dark.png`
-- `screenshots/garden-bloom.png`
+- `screenshots/image0.png`
+- `screenshots/image1.png`
+- `screenshots/image2.png`
 
 ---
 
@@ -107,8 +107,5 @@ _Add your own screenshots here:_
 - Habit tracker
 - Bookmark grid
 
----
 
-## 🪪 License
 
-MIT — use, remix, and share freely.
