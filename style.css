@@ -1,0 +1,294 @@
+/* ===========================================
+   Hasiru Haadi — Digital Garden Dashboard
+   Design tokens
+   =========================================== */
+:root {
+  --moss-50: #f4f7f1;
+  --moss-100: #e6ede0;
+  --moss-300: #a9c29a;
+  --moss-500: #6f8f5a;
+  --moss-700: #3f5a32;
+  --moss-900: #1f2c19;
+  --beige-50: #faf6ee;
+  --beige-100: #f1ead9;
+  --beige-300: #d9cba8;
+  --bark: #5a4a35;
+
+  --bg: var(--beige-50);
+  --surface: rgba(255, 255, 255, 0.55);
+  --surface-strong: rgba(255, 255, 255, 0.75);
+  --border: rgba(63, 90, 50, 0.15);
+  --text: #2a3422;
+  --text-soft: #5b6b50;
+  --accent: var(--moss-500);
+  --accent-strong: var(--moss-700);
+  --shadow: 0 20px 50px -20px rgba(31, 44, 25, 0.35);
+  --radius: 22px;
+  --blur: 22px;
+  --bg-image: url("assets/backgrounds/forest.jpg");
+}
+
+[data-theme="dark"] {
+  --bg: #0f1410;
+  --surface: rgba(20, 28, 22, 0.55);
+  --surface-strong: rgba(20, 28, 22, 0.78);
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e8efe2;
+  --text-soft: #a3b39a;
+  --accent: #9ec488;
+  --accent-strong: #c8e0b6;
+  --shadow: 0 25px 60px -25px rgba(0, 0, 0, 0.7);
+}
+
+/* ===========================================
+   Base
+   =========================================== */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; min-height: 100vh; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+  position: relative;
+  padding: 28px clamp(20px, 4vw, 56px) 60px;
+  min-height: 100vh;
+}
+
+.bg-layer {
+  position: fixed; inset: 0;
+  background-image: var(--bg-image);
+  background-size: cover; background-position: center;
+  filter: saturate(1.05);
+  z-index: -2;
+  transition: opacity 800ms ease;
+}
+.bg-overlay {
+  position: fixed; inset: 0;
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--bg) 55%, transparent) 0%,
+    color-mix(in oklab, var(--bg) 80%, transparent) 100%);
+  z-index: -1;
+}
+.rain-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0; transition: opacity 600ms; }
+.rain-canvas.active { opacity: 0.55; }
+
+/* ===========================================
+   Topbar
+   =========================================== */
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 32px;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-mark {
+  width: 46px; height: 46px; display: grid; place-items: center;
+  background: var(--surface-strong); border: 1px solid var(--border);
+  border-radius: 14px; font-size: 22px; backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow);
+}
+.brand-name { margin: 0; font-size: 18px; letter-spacing: 0.3px; font-weight: 600; }
+.brand-tag { margin: 0; font-size: 12px; color: var(--text-soft); }
+
+.top-actions { display: flex; gap: 10px; }
+.icon-btn {
+  width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--border);
+  background: var(--surface); backdrop-filter: blur(var(--blur));
+  cursor: pointer; font-size: 18px; transition: transform .2s, background .2s;
+  color: var(--text);
+}
+.icon-btn:hover { transform: translateY(-2px); background: var(--surface-strong); }
+
+/* ===========================================
+   Hero
+   =========================================== */
+.hero { text-align: center; margin: 30px auto 44px; max-width: 760px; }
+.greeting { margin: 0; font-size: 16px; color: var(--text-soft); letter-spacing: .4px; }
+.clock {
+  margin: 6px 0 4px; font-size: clamp(64px, 9vw, 112px);
+  font-weight: 200; letter-spacing: -3px;
+  background: linear-gradient(180deg, var(--text), var(--accent-strong));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.date { margin: 0; color: var(--text-soft); font-size: 14px; }
+.quote {
+  margin: 22px auto 0; padding: 14px 22px;
+  font-style: italic; color: var(--text-soft); max-width: 600px;
+  border-left: 2px solid var(--accent); text-align: left;
+  animation: fadeIn .8s ease;
+}
+
+/* ===========================================
+   Grid + Cards
+   =========================================== */
+.grid {
+  display: grid; gap: 22px;
+  grid-template-columns: repeat(12, 1fr);
+  max-width: 1280px; margin: 0 auto;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow);
+  transition: transform .3s ease, box-shadow .3s ease;
+  animation: rise .6s ease both;
+}
+.card:hover { transform: translateY(-3px); }
+.card-tasks   { grid-column: span 5; }
+.card-garden  { grid-column: span 4; }
+.card-weather { grid-column: span 3; }
+.card-timer   { grid-column: span 5; }
+.card-notes   { grid-column: span 7; }
+@media (max-width: 1000px) {
+  .card-tasks, .card-garden, .card-weather, .card-timer, .card-notes { grid-column: span 12; }
+}
+
+.card-head {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;
+}
+.card-head h3 { margin: 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-soft); font-weight: 600; }
+.muted { color: var(--text-soft); font-size: 12px; }
+.link-btn {
+  background: none; border: 0; color: var(--accent-strong); cursor: pointer;
+  font-size: 12px; text-decoration: underline; padding: 0;
+}
+
+/* ===========================================
+   Buttons & inputs
+   =========================================== */
+.btn-primary, .btn-ghost {
+  border-radius: 12px; padding: 10px 16px; font-weight: 600; font-size: 14px;
+  cursor: pointer; transition: all .2s; border: 1px solid transparent;
+}
+.btn-primary {
+  background: var(--accent-strong); color: #f7faf3;
+}
+.btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent; color: var(--text); border-color: var(--border);
+}
+.btn-ghost:hover { background: var(--surface-strong); }
+
+input[type="text"], textarea {
+  width: 100%; padding: 11px 14px; border-radius: 12px;
+  border: 1px solid var(--border); background: var(--surface-strong);
+  color: var(--text); font-family: inherit; font-size: 14px;
+  outline: none; transition: border-color .2s, box-shadow .2s;
+}
+input[type="text"]:focus, textarea:focus {
+  border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 20%, transparent);
+}
+
+/* ===========================================
+   Tasks
+   =========================================== */
+.task-form { display: flex; gap: 8px; margin-bottom: 14px; }
+.task-list { list-style: none; padding: 0; margin: 0; max-height: 280px; overflow-y: auto; }
+.task-list li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 12px;
+  margin-bottom: 6px; background: var(--surface-strong);
+  border: 1px solid var(--border);
+  animation: rise .4s ease both;
+}
+.task-list li.done .label { text-decoration: line-through; color: var(--text-soft); }
+.task-list .label { flex: 1; font-size: 14px; }
+.task-list .check {
+  width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid var(--accent);
+  background: transparent; cursor: pointer; display: grid; place-items: center;
+}
+.task-list li.done .check { background: var(--accent-strong); color: white; }
+.task-list .del {
+  background: none; border: 0; cursor: pointer; color: var(--text-soft);
+  font-size: 16px; opacity: .6; transition: opacity .2s;
+}
+.task-list .del:hover { opacity: 1; color: #b94a4a; }
+
+/* ===========================================
+   Garden
+   =========================================== */
+.garden-stage { display: grid; place-items: center; padding: 6px 0; }
+.plant-svg { width: 200px; height: 200px; }
+.soil { fill: color-mix(in oklab, var(--bark) 70%, transparent); }
+.stem { stroke: var(--moss-700); stroke-width: 3; fill: none; stroke-linecap: round; }
+.leaf { fill: var(--moss-500); }
+.seed { fill: var(--bark); }
+.flower-center { fill: #e9b04a; }
+.petal { fill: #f4d3a4; }
+
+.plant-sprout, .plant-small, .plant-flower { opacity: 0; transition: opacity .8s ease; }
+.garden-stage[data-stage="0"] .plant-seed { opacity: 1; }
+.garden-stage[data-stage="0"] .plant-sprout,
+.garden-stage[data-stage="0"] .plant-small,
+.garden-stage[data-stage="0"] .plant-flower { opacity: 0; }
+.garden-stage[data-stage="1"] .plant-seed { opacity: 0; }
+.garden-stage[data-stage="1"] .plant-sprout { opacity: 1; }
+.garden-stage[data-stage="2"] .plant-seed,
+.garden-stage[data-stage="2"] .plant-sprout { opacity: 0; }
+.garden-stage[data-stage="2"] .plant-small { opacity: 1; }
+.garden-stage[data-stage="3"] .plant-seed,
+.garden-stage[data-stage="3"] .plant-sprout,
+.garden-stage[data-stage="3"] .plant-small { opacity: 0; }
+.garden-stage[data-stage="3"] .plant-flower { opacity: 1; animation: sway 4s ease-in-out infinite; transform-origin: 100px 175px; }
+
+.garden-status { text-align: center; color: var(--text-soft); font-size: 13px; margin: 8px 0 0; }
+
+/* ===========================================
+   Weather
+   =========================================== */
+.weather-body { display: flex; flex-direction: column; gap: 4px; }
+.weather-temp { font-size: 42px; font-weight: 300; margin: 4px 0; }
+.weather-cond { color: var(--text-soft); font-size: 13px; text-transform: capitalize; }
+
+/* ===========================================
+   Timer
+   =========================================== */
+.timer-display {
+  font-size: clamp(48px, 6vw, 72px); font-weight: 200;
+  text-align: center; letter-spacing: -2px; margin: 8px 0 16px;
+  color: var(--accent-strong);
+}
+.timer-actions { display: flex; gap: 10px; justify-content: center; }
+
+/* ===========================================
+   Notes
+   =========================================== */
+#notes {
+  min-height: 200px; resize: vertical; line-height: 1.6;
+}
+
+/* ===========================================
+   Footer
+   =========================================== */
+.footer { text-align: center; margin-top: 40px; color: var(--text-soft); font-size: 12px; }
+
+/* ===========================================
+   Modal
+   =========================================== */
+.modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,.45);
+  display: grid; place-items: center; z-index: 50; backdrop-filter: blur(6px);
+}
+.modal[hidden] { display: none; }
+.modal-card {
+  background: var(--bg); border-radius: var(--radius); padding: 26px;
+  width: min(420px, 92vw); border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.modal-card h3 { margin: 0 0 6px; }
+.modal-card label { display: block; font-size: 12px; color: var(--text-soft); margin-top: 14px; }
+.modal-card label input { margin-top: 6px; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 22px; }
+
+/* ===========================================
+   Animations
+   =========================================== */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: none;} }
+@keyframes rise { from { opacity: 0; transform: translateY(14px);} to { opacity: 1; transform: none;} }
+@keyframes sway {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}

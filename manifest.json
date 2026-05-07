@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Hasiru Haadi – Digital Garden Dashboard",
+  "version": "1.0.0",
+  "description": "A calming, nature-inspired new tab dashboard with tasks, notes, weather, focus timer, and a digital garden that grows as you get things done.",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": ["storage", "geolocation"],
+  "icons": {
+    "16": "assets/icons/icon.png",
+    "48": "assets/icons/icon.png",
+    "128": "assets/icons/icon.png"
+  }
+}

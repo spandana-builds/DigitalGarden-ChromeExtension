@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hasiru Haadi · Digital Garden</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="light">
+  <!-- Background layers -->
+  <div class="bg-layer"></div>
+  <div class="bg-overlay"></div>
+  <canvas id="rainCanvas" class="rain-canvas" aria-hidden="true"></canvas>
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">🌿</span>
+      <div>
+        <h1 class="brand-name">Hasiru Haadi</h1>
+        <p class="brand-tag">Your digital garden</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" id="rainToggle" title="Rain ambience">🌧️</button>
+      <button class="icon-btn" id="bgShuffle" title="Change background">🖼️</button>
+      <button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="greeting" id="greeting">Hello, friend</p>
+    <h2 class="clock" id="clock">--:--</h2>
+    <p class="date" id="date"></p>
+    <blockquote class="quote" id="quote">“In every walk with nature, one receives far more than they seek.”</blockquote>
+  </section>
+
+  <!-- Main grid -->
+  <main class="grid">
+    <!-- Tasks -->
+    <section class="card card-tasks">
+      <header class="card-head">
+        <h3>Tasks</h3>
+        <span class="muted" id="taskCount">0 done</span>
+      </header>
+      <form id="taskForm" class="task-form">
+        <input id="taskInput" type="text" placeholder="Plant a new task…" autocomplete="off" />
+        <button type="submit" class="btn-primary">Add</button>
+      </form>
+      <ul id="taskList" class="task-list"></ul>
+    </section>
+
+    <!-- Garden + Streak -->
+    <section class="card card-garden">
+      <header class="card-head">
+        <h3>Your Garden</h3>
+        <span class="muted" id="streak">🔥 0 day streak</span>
+      </header>
+      <div class="garden-stage" id="gardenStage" data-stage="0">
+        <svg viewBox="0 0 200 200" class="plant-svg" aria-hidden="true">
+          <ellipse cx="100" cy="180" rx="70" ry="10" class="soil"/>
+          <g class="plant-seed"><circle cx="100" cy="170" r="6" class="seed"/></g>
+          <g class="plant-sprout">
+            <path d="M100 175 Q100 150 100 135" class="stem"/>
+            <path d="M100 145 Q85 135 80 145 Q92 150 100 148" class="leaf"/>
+          </g>
+          <g class="plant-small">
+            <path d="M100 175 Q100 130 100 100" class="stem"/>
+            <path d="M100 130 Q75 115 65 130 Q88 138 100 134" class="leaf"/>
+            <path d="M100 115 Q125 100 135 115 Q112 123 100 119" class="leaf"/>
+          </g>
+          <g class="plant-flower">
+            <path d="M100 175 Q100 110 100 80" class="stem"/>
+            <path d="M100 140 Q70 125 58 142 Q85 152 100 146" class="leaf"/>
+            <path d="M100 120 Q130 105 142 122 Q115 132 100 126" class="leaf"/>
+            <circle cx="100" cy="72" r="10" class="flower-center"/>
+            <circle cx="86" cy="72" r="8" class="petal"/>
+            <circle cx="114" cy="72" r="8" class="petal"/>
+            <circle cx="100" cy="58" r="8" class="petal"/>
+            <circle cx="100" cy="86" r="8" class="petal"/>
+          </g>
+        </svg>
+      </div>
+      <p class="garden-status" id="gardenStatus">Plant a seed by completing your first task.</p>
+    </section>
+
+    <!-- Weather -->
+    <section class="card card-weather">
+      <header class="card-head">
+        <h3>Weather</h3>
+        <button class="link-btn" id="weatherSetup">Setup</button>
+      </header>
+      <div class="weather-body" id="weatherBody">
+        <p class="muted">Click <strong>Setup</strong> to add your free API key.</p>
+      </div>
+    </section>
+
+    <!-- Pomodoro -->
+    <section class="card card-timer">
+      <header class="card-head">
+        <h3>Focus Timer</h3>
+        <span class="muted" id="timerMode">Pomodoro · 25:00</span>
+      </header>
+      <div class="timer-display" id="timerDisplay">25:00</div>
+      <div class="timer-actions">
+        <button class="btn-primary" id="timerStart">Start</button>
+        <button class="btn-ghost" id="timerPause">Pause</button>
+        <button class="btn-ghost" id="timerReset">Reset</button>
+      </div>
+    </section>
+
+    <!-- Notes -->
+    <section class="card card-notes">
+      <header class="card-head">
+        <h3>Quick Notes</h3>
+        <span class="muted" id="notesStatus">Saved</span>
+      </header>
+      <textarea id="notes" placeholder="Let your thoughts settle here…"></textarea>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>🌱 Cultivated with calm · Hasiru Haadi</span>
+  </footer>
+
+  <!-- Weather setup modal -->
+  <div class="modal" id="weatherModal" hidden>
+    <div class="modal-card">
+      <h3>Weather Setup</h3>
+      <p class="muted">
+        Get a free API key from
+        <a href="https://openweathermap.org/api" target="_blank" rel="noreferrer">OpenWeatherMap</a>
+        and paste it below. You can also set a city manually.
+      </p>
+      <label>API Key
+        <input type="text" id="apiKeyInput" placeholder="OpenWeatherMap API key" />
+      </label>
+      <label>City (optional)
+        <input type="text" id="cityInput" placeholder="e.g. Bengaluru" />
+      </label>
+      <div class="modal-actions">
+        <button class="btn-ghost" id="weatherCancel">Cancel</button>
+        <button class="btn-primary" id="weatherSave">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="rainAudio" loop preload="none">
+    <source src="assets/sounds/rain.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
