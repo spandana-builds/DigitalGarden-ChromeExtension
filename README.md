@@ -1,12 +1,12 @@
-# 🌿 Hasiru Haadi – Digital Garden Dashboard
+#  Hasiru Haadi – Digital Garden Dashboard
 
-A calming, nature-inspired Chrome new tab extension that helps you stay focused, organized, and at peace. Built with vanilla HTML, CSS, and JavaScript — no frameworks.
+A nature-inspired productivity dashboard that transforms your browser’s new tab into a peaceful digital workspace for focus, organization, and mindful productivity. Built with vanilla HTML, CSS, and JavaScript — no frameworks.
 
 > _Hasiru Haadi_ means "green path" in Kannada.
 
 ---
 
-## ✨ Features
+##  Features
 
 - 🕰 **Live clock, date & dynamic greeting**
 - 💬 **Daily nature-inspired quote**
@@ -24,7 +24,7 @@ A calming, nature-inspired Chrome new tab extension that helps you stay focused,
 
 ---
 
-## 📁 Folder Structure
+##  Folder Structure
 
 ```
 digital-garden-dashboard/
@@ -46,7 +46,7 @@ digital-garden-dashboard/
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - HTML5
 - CSS3 (custom properties, glassmorphism, grid)
@@ -56,7 +56,7 @@ digital-garden-dashboard/
 
 ---
 
-## 🚀 Installation
+##  Installation
 
 1. **Download / clone** this folder.
 2. Open Chrome and go to `chrome://extensions`.
@@ -68,7 +68,7 @@ Works in Chrome, Edge, Brave, Arc, Opera, and any Chromium browser.
 
 ---
 
-## ⛅ Weather Setup
+##  Weather Setup
 
 1. Get a free API key from [OpenWeatherMap](https://openweathermap.org/api).
 2. On the dashboard, click **Setup** in the Weather card.
@@ -77,7 +77,7 @@ Works in Chrome, Edge, Brave, Arc, Opera, and any Chromium browser.
 
 ---
 
-## How the Garden Grows 🧑‍🌾
+##How the Garden Grows 🧑‍🌾
 
 | Tasks completed | Stage |
 |-----------------|-------|
@@ -88,7 +88,7 @@ Works in Chrome, Edge, Brave, Arc, Opera, and any Chromium browser.
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 _Add your own screenshots here:_
 
@@ -98,7 +98,7 @@ _Add your own screenshots here:_
 
 ---
 
-## 🌟 Future Improvements
+##  Future Improvements
 
 - Sync data via `chrome.storage.sync`
 - More ambience sounds (forest, café, ocean)
