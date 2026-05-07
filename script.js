@@ -27,10 +27,9 @@ const QUOTES = [
 /* ---------- Backgrounds (gradient fallbacks) ---------- */
 const BACKGROUNDS = [
   'url("assets/backgrounds/forest.jpg")',
-  'linear-gradient(135deg, #c5d8b8, #6f8f5a)',
-  'linear-gradient(135deg, #e9d8b8, #b89968)',
-  'linear-gradient(135deg, #b6cfb1, #4d6b48)',
-  'linear-gradient(135deg, #cfd9c4, #7a9b6c)',
+  'url("assets/backgrounds/image2.jpg")',
+  'url("assets/backgrounds/image3.jpg")',
+
 ];
 
 /* ---------- Clock + greeting ---------- */
@@ -45,7 +44,7 @@ function tickClock() {
   const h = now.getHours();
   const greet = h < 5 ? 'Rest well' : h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : h < 21 ? 'Good evening' : 'Quiet night';
   const name = LS.get('hh.name', '');
-  document.getElementById('greeting').textContent = name ? `${greet}, ${name}` : `${greet}, friend`;
+  document.getElementById('greeting').textContent = name ? `${greet}, ${name}` : `${greet}, Spandana`;
 }
 setInterval(tickClock, 1000); tickClock();
 
