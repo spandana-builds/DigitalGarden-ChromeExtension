@@ -13,6 +13,7 @@
   --beige-100: #f1ead9;
   --beige-300: #d9cba8;
   --bark: #5a4a35;
+  --www: #f4f7f1;
 
   --bg: var(--beige-50);
   --surface: rgba(255, 255, 255, 0.55);
@@ -40,6 +41,7 @@
   --accent: #9ec488;
   --accent-strong: #c8e0b6;
   --shadow: 0 25px 60px -25px rgba(0, 0, 0, 0.7);
+  --www:  rgba(1, 12, 4, 0.78);
 }
 
 /* ===========================================
@@ -174,7 +176,7 @@ body {
   cursor: pointer; transition: all .2s; border: 1px solid transparent;
 }
 .btn-primary {
-  background: var(--accent-strong); color: #f7faf3;
+  background: var(--accent-strong); color:var(--www);
 }
 .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
 .btn-ghost {
